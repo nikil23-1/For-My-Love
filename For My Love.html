@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/nikil/Downloads/love-website.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <link href="./For My Love_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8F0;
+            --rose: #E8B4B8;
+            --deep-rose: #C99195;
+            --burgundy: #8B4C52;
+            --soft-gold: #D4AF7A;
+            --text-dark: #4A3B3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFF5EB 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--rose);
+            opacity: 0;
+            animation: float-up 15s infinite ease-in-out;
+        }
+
+        .heart:nth-child(2) { left: 20%; animation-delay: 2s; font-size: 16px; }
+        .heart:nth-child(3) { left: 40%; animation-delay: 4s; font-size: 24px; }
+        .heart:nth-child(4) { left: 60%; animation-delay: 6s; font-size: 18px; }
+        .heart:nth-child(5) { left: 80%; animation-delay: 8s; font-size: 22px; }
+        .heart:nth-child(6) { left: 10%; animation-delay: 10s; font-size: 20px; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 12s; font-size: 16px; }
+        .heart:nth-child(8) { left: 30%; animation-delay: 14s; font-size: 26px; }
+
+        @keyframes float-up {
+            0% {
+                bottom: -10%;
+                opacity: 0;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                bottom: 110%;
+                opacity: 0;
+                transform: translateX(100px) rotate(360deg);
+            }
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 120px;
+            opacity: 0;
+            animation: fadeInDown 1.5s ease forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            color: var(--burgundy);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--deep-rose);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Decorative divider */
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--rose), transparent);
+            margin: 60px auto;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '❤';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--cream);
+            padding: 0 15px;
+            font-size: 20px;
+            color: var(--rose);
+        }
+
+        /* Love Letter Section */
+        .section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.9s; }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .love-letter {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(139, 76, 82, 0.15);
+            border: 1px solid rgba(232, 180, 184, 0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .love-letter::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 100px;
+            color: var(--rose);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .love-letter p {
+            font-size: 1.3rem;
+            line-height: 2;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .love-letter .signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(139, 76, 82, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--rose);
+            cursor: pointer;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(139, 76, 82, 0.3);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        /* Reasons Section */
+        .reasons-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--rose);
+            box-shadow: 0 5px 25px rgba(139, 76, 82, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(232, 180, 184, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 35px rgba(139, 76, 82, 0.2);
+        }
+
+        .reason-card:hover::before {
+            opacity: 1;
+        }
+
+        .reason-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--rose);
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reason-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 80px 20px 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            font-style: italic;
+        }
+
+        .footer .heart-icon {
+            font-size: 2rem;
+            color: var(--rose);
+            animation: heartbeat 1.5s ease infinite;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+
+            .love-letter {
+                padding: 40px 30px;
+            }
+
+            .love-letter p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+
+            .reason-card {
+                padding: 30px 25px;
+            }
+
+            .reason-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="hearts-container">
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>For My Love</h1>
+            <p class="subtitle">A letter of gratitude from my heart to yours</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Love Letter Section -->
+        <section class="section">
+            <h2 class="section-title">My Dearest</h2>
+            <div class="love-letter">
+                <p>My Pancake,</p>
+                <p>Imagine being far away from the love of my life on this beautiful occasion is more painful than anything I can think of. But being able to hold onto something that most of them lose is something I'll always feel happy and proud of!</p>
+                <p>I'll be thankful to have you in my life as you have always been supportive no matter in what state I am. The way you always try to stay positive when things don't go our way which has always been a strong factor which has been holding us together for more than a year!</p>
+                <p>Everyday in my life starts with a smile when I think that I have someone to rely on for the rest of my Life... Bagging a Beautiful, Intelligent, Lovely [sometimes evil ;)] women isn't everone's cup of tea! And I'll forever be grateful and thankful to have you in my life every single day!!! &lt;3</p>
+                <p>I love you more than words can express, today and always.</p>
+                <div class="signature">Forever yours</div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Photo Gallery Section -->
+        <section class="section">
+            <h2 class="section-title">Our Beautiful Moments</h2>
+            <div class="gallery">
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #1</div>
+                        <div class="photo-caption">Our first adventure together</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #2</div>
+                        <div class="photo-caption">That perfect sunset</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #3</div>
+                        <div class="photo-caption">Making memories</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #4</div>
+                        <div class="photo-caption">Your beautiful smile</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #5</div>
+                        <div class="photo-caption">Together forever</div>
+                    </div>
+                    <div class="photo-item">
+                        <div class="photo-placeholder">Your Photo #6</div>
+                        <div class="photo-caption">My favorite memory</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Reasons Section -->
+        <section class="section">
+            <h2 class="section-title">Why I Love You</h2>
+            <div class="reasons-container">
+                <div class="reason-card">
+                    <div class="reason-number">01</div>
+                    <div class="reason-text">Your kindness touches everyone around you. The way you care for others, always putting their needs before your own, shows me what a beautiful soul you have.</div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-number">02</div>
+                    <div class="reason-text">Your laugh is my favorite sound in the world. It lights up the room and makes even the darkest days feel bright and hopeful.</div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-number">03</div>
+                    <div class="reason-text">You understand me in ways no one else does. You see through my walls and love me for who I truly am, flaws and all.</div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-number">04</div>
+                    <div class="reason-text">Your strength inspires me every single day. The way you handle challenges with grace and determination makes me want to be a better person.</div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-number">05</div>
+                    <div class="reason-text">You make me feel at home, no matter where we are. With you by my side, I've found the place where I truly belong.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="heart-icon">♥</div>
+            <p>With all my love and gratitude</p>
+        </footer>
+    </div>
+
+</body></html>
